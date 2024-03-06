@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 import { UserModule } from 'src/users/user.module';
 import { JwtModule } from '@nestjs/jwt';
 import { EmailNotExistsValidator } from 'src/users/validator/emailNotExists.validator';
-import { EmailExistsValidator } from 'src/users/validator/emailNotExists.validator copy';
+import { EmailExistsValidator } from 'src/users/validator/emailExists.validator copy';
 import { AuthGuard } from './auth.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule, ConfigService } from '@nestjs/config';

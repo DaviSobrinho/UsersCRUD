@@ -8,7 +8,7 @@ import { UserService } from "./user.service";
 import { IsCPFValidator } from "./validator/numericCPF.validator";
 import { PermissionExistsByIdValidator } from "src/permissions/validator/permissionExistsById.validator";
 import { PermissionModule } from "src/permissions/permission.module";
-import { EmailExistsValidator } from "./validator/emailNotExists.validator copy";
+import { EmailExistsValidator } from "./validator/emailExists.validator copy";
 
 @Module({
     imports: [TypeOrmModule.forFeature([UserEntity]), PermissionModule],
