@@ -1,6 +1,6 @@
 import { IsBoolean, IsEmail, IsNotEmpty, IsNumber, IsOptional, IsString, Length, MinLength } from "class-validator";
-import { EmailExists } from "../validator/emailExists.validator";
-import { CPFExists } from "../validator/cpfExists.validator";
+import { EmailNotExists } from "../validator/emailNotExists.validator";
+import { CPFNotExists } from "../validator/cpfNotExists.validator";
 import { IsCPF } from "../validator/numericCPF.validator";
 import { PermissionExistsById } from "src/permissions/validator/permissionExistsById.validator";
 
@@ -11,7 +11,7 @@ export class UpdateUserDTO{
     name : string;
     @IsOptional()
     @IsEmail(undefined, {message :'The email is not valid'})
-    @EmailExists({message: 'The email is already beeing used'})
+    @EmailNotExists({message: 'The email is already beeing used'})
     email : string;
     @IsString()
     @IsOptional()
@@ -19,7 +19,7 @@ export class UpdateUserDTO{
     password : string;
     @IsOptional()
     @IsCPF({message: 'The CPF is not valid' })
-    @CPFExists({message: 'The CPF is already beeing used'})
+    @CPFNotExists({message: 'The CPF is already beeing used'})
     cpf: string;
     @IsNumber()
     @IsOptional()

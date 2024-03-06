@@ -1,18 +1,20 @@
 import { Module } from "@nestjs/common";
 import { UserController } from "./user.controller";
-import { EmailExistsValidator } from "./validator/emailExists.validator";
+import { EmailNotExistsValidator } from "./validator/emailNotExists.validator";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { UserEntity } from "./user.entity";
-import { CPFExistsValidator } from "./validator/cpfExists.validator";
+import { CPFNotExistsValidator } from "./validator/cpfNotExists.validator";
 import { UserService } from "./user.service";
-import { NumericCPFValidator } from "./validator/numericCPF.validator";
+import { IsCPFValidator } from "./validator/numericCPF.validator";
 import { PermissionExistsByIdValidator } from "src/permissions/validator/permissionExistsById.validator";
 import { PermissionModule } from "src/permissions/permission.module";
+import { EmailExistsValidator } from "./validator/emailNotExists.validator copy";
 
 @Module({
     imports: [TypeOrmModule.forFeature([UserEntity]), PermissionModule],
     controllers: [UserController],
-    providers: [EmailExistsValidator, CPFExistsValidator, NumericCPFValidator, UserService, PermissionExistsByIdValidator]
+    providers: [EmailNotExistsValidator, CPFNotExistsValidator, IsCPFValidator, UserService, PermissionExistsByIdValidator,EmailExistsValidator],
+    exports: [UserService, EmailNotExistsValidator,EmailExistsValidator]
 })
 
 export class UserModule {}

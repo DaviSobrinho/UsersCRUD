@@ -3,7 +3,7 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 @ValidatorConstraint({async: true})
-export class NumericCPFValidator implements ValidatorConstraintInterface{
+export class IsCPFValidator implements ValidatorConstraintInterface{
     
     validate(value: any,_validationArguments?: ValidationArguments,): boolean {
         const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
@@ -18,7 +18,7 @@ export const IsCPF = (validationOptions? : ValidationOptions) =>  {
             propertyName: property,
             options : validationOptions,
             constraints : [],
-            validator : NumericCPFValidator
+            validator : IsCPFValidator
         })
     }
 }
