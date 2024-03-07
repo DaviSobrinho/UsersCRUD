@@ -1,8 +1,8 @@
 import { IsBoolean, IsEmail, IsNotEmpty, IsNumber, IsOptional, IsString, Length, MinLength } from "class-validator";
 import { EmailNotExists as EmailNotExists } from "../validator/emailNotExists.validator";
-import { IsCPF } from "../validator/numericCPF.validator";
+import { IsCPF } from "../validator/isCPF.validator";
 import { CPFNotExists } from "../validator/cpfNotExists.validator";
-import { PermissionExistsById } from "src/permissions/validator/permissionExistsById.validator";
+import { PermissionIdNotExists } from "src/permissions/validator/permissionIdNotExists.validator";
 
 export class CreateUserDTO{
     @IsString()
@@ -18,7 +18,7 @@ export class CreateUserDTO{
     @CPFNotExists({message: 'The CPF is already beeing used'})
     cpf: string;
     @IsNumber()
-    @PermissionExistsById({message: 'The permission does not exists'})
+    @PermissionIdNotExists({message: 'The permission does not exists'})
     id_permission: number
     @IsOptional()
     @IsBoolean()

@@ -1,6 +1,6 @@
 import { IsEmail, Length, MinLength} from "class-validator"
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from "typeorm"
-import { IsCPF } from "./validator/numericCPF.validator"
+import { IsCPF } from "./validator/isCPF.validator"
 import { PermissionEntity } from "src/permissions/permission.entity"
 
 @Entity({name: 'users'})

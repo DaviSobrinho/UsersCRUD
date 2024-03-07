@@ -1,5 +1,5 @@
 import { IsEmail, IsString, MinLength } from "class-validator";
-import { EmailExists } from "src/users/validator/emailExists.validator copy";
+import { EmailExists } from "src/users/validator/emailExists.validator";
 
 export class SignInDto {
     @IsEmail(undefined,{message: 'The email is invalid'})

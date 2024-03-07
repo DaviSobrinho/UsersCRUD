@@ -1,8 +1,8 @@
 import { IsBoolean, IsEmail, IsNotEmpty, IsNumber, IsOptional, IsString, Length, MinLength } from "class-validator";
 import { EmailNotExists } from "../validator/emailNotExists.validator";
 import { CPFNotExists } from "../validator/cpfNotExists.validator";
-import { IsCPF } from "../validator/numericCPF.validator";
-import { PermissionExistsById } from "src/permissions/validator/permissionExistsById.validator";
+import { IsCPF } from "../validator/isCPF.validator";
+import { PermissionIdNotExists } from "src/permissions/validator/permissionIdNotExists.validator";
 
 export class UpdateUserDTO{
     @IsOptional()
@@ -23,7 +23,7 @@ export class UpdateUserDTO{
     cpf: string;
     @IsNumber()
     @IsOptional()
-    @PermissionExistsById()
+    @PermissionIdNotExists({message: 'The permission does not exists'})
     id_permission: number
     @IsOptional()
     @IsBoolean()

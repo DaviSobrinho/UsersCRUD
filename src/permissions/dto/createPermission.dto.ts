@@ -1,10 +1,10 @@
 import { IsBoolean, IsOptional, IsString, MaxLength} from "class-validator";
-import { PermissionNotExistsByName } from "../validator/permissionExistsByName.validator";
+import { PermissionNameNotExists } from "../validator/permissionNameNotExists.validator";
 
 export class CreatePermissionDTO{
-    @PermissionNotExistsByName({message: 'Permission is already beeing used'})
+    @PermissionNameNotExists({message: 'Permission is already beeing used'})
     @IsString()
-    @MaxLength(100)
+    @MaxLength(100,{message: 'The permission name is too long'})
     permission: string
     @IsOptional()
     @IsBoolean()

@@ -4,24 +4,24 @@ import { PermissionService } from "../permission.service";
 
 @Injectable()
 @ValidatorConstraint({async: true})
-export class PermissionExistsByIdValidator implements ValidatorConstraintInterface{
+export class PermissionNameNotExistsValidator implements ValidatorConstraintInterface{
     
     constructor(private permissionRepository : PermissionService){}
 
     async validate(value: any,_validationArguments?: ValidationArguments,): Promise<boolean> {
-        const permissionWithIdExists = await this.permissionRepository.getPermissionById(value)
-        return !!permissionWithIdExists
+        const permissionNameNotExists = await this.permissionRepository.getPermissionByName(value)
+        return !permissionNameNotExists
     }
 }
 
-export const PermissionExistsById = (validationOptions? : ValidationOptions) =>  {
+export const PermissionNameNotExists = (validationOptions? : ValidationOptions) =>  {
     return(object: Object, property : string) =>{
         registerDecorator({
             target: object.constructor,
             propertyName: property,
             options : validationOptions,
             constraints : [],
-            validator : PermissionExistsByIdValidator
+            validator : PermissionNameNotExistsValidator
         })
     }
 }
